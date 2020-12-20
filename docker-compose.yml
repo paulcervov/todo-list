@@ -1,0 +1,41 @@
+version: "3.7"
+services:
+  app:
+    image: node:lts-alpine
+    command: sh -c "npm ci --production && npm run build && npm i -g serve && serve -s build -l tcp://0.0.0.0:80"
+    ports:
+      - 80:80
+    working_dir: /app
+    volumes:
+      - ./app/package.json:/app/package.json
+      - ./app/package-lock.json:/app/package-lock.json
+      - ./app/src:/app/src
+      - ./app/public:/app/public
+      - ./app/build:/app/build
+    environment:
+      PUBLIC_URL: /
+      REACT_APP_API_URL: http://398287-paulcervov.tmweb.ru:4000
+  api:
+    image: node:12-alpine
+    command: sh -c "npm ci --production && node src/index.js"
+    ports:
+      - 4000:80
+    working_dir: /app
+    volumes:
+      - ./api/package.json:/app/package.json
+      - ./api/package-lock.json:/app/package-lock.json
+      - ./api/src:/app/src
+    environment:
+      PORT: 80
+      HOST: 0.0.0.0
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: secret
+      MYSQL_DB: todos
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: todos
