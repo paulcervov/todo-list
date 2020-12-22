@@ -2,14 +2,16 @@
 
 This is a simple project for learning Docker 🐳.
 
+Inspired by [Docker Getting Started Tutorial](https://github.com/docker/getting-started).
+
 The project combines several services:
 * [Todo List App](https://github.com/paulcervov/todo-list-app) - application service
 * [Todo List Api](https://github.com/paulcervov/todo-list-api) - backend service
 * [Todo List Db](https://github.com/paulcervov/todo-list-db) - mysql database service
 
-Thanks to Docker and Docker Compose, you can quickly deploy and run it all together! 👏
+Thanks to Docker and Docker Compose, now you can quickly setup and run it all together 👏!
 
-## Deploy
+## Setup and run with Docker Compose
 
 1. `git clone https://github.com/paulcervov/todo-list.git && cd todo-list`
 
@@ -27,7 +29,7 @@ Thanks to Docker and Docker Compose, you can quickly deploy and run it all toget
 
 6. `docker-compose logs -f`
 
-Wait until all services are running, then go to the browser.
+Wait for all services to load.
 
 To stop all services enter `docker-compose down`.
 

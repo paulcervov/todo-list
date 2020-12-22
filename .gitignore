@@ -1,5 +1,9 @@
-.DS_Store
-/.idea
-/db
+/app
 /api
+/db
+
+.DS_Store
+
 .env
+
+/.idea
