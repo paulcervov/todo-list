@@ -2,9 +2,9 @@ version: "3.7"
 services:
   app:
     image: node:lts-alpine
-    command: sh -c "npm ci --production && npm run build && npm i -g serve && serve -s build -l tcp://0.0.0.0:80"
+    command: sh -c "npm ci --production && npm run build && npm i -g serve && serve -s build -l tcp://0.0.0.0:5000"
     ports:
-      - 80:80
+      - 80:5000
     working_dir: /app
     volumes:
       - ./app/package.json:/app/package.json
@@ -17,16 +17,15 @@ services:
       REACT_APP_API_URL: ${REACT_APP_API_URL}
   api:
     image: node:12-alpine
-    command: sh -c "npm ci --production && node src/index.js"
+    command: sh -c "npm ci --production && node src/index.js --host=0.0.0.0"
     ports:
-      - 4000:80
+      - 4000:4000
     working_dir: /app
     volumes:
       - ./api/package.json:/app/package.json
       - ./api/package-lock.json:/app/package-lock.json
       - ./api/src:/app/src
     environment:
-      HOST: ${HOST}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
