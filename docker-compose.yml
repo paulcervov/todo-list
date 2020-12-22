@@ -13,8 +13,8 @@ services:
       - ./app/public:/app/public
       - ./app/build:/app/build
     environment:
-      PUBLIC_URL: /
-      REACT_APP_API_URL: http://398287-paulcervov.tmweb.ru:4000
+      PUBLIC_URL: ${PUBLIC_URL}
+      REACT_APP_API_URL: ${REACT_APP_API_URL}
   api:
     image: node:12-alpine
     command: sh -c "npm ci --production && node src/index.js"
@@ -26,16 +26,16 @@ services:
       - ./api/package-lock.json:/app/package-lock.json
       - ./api/src:/app/src
     environment:
-      PORT: 80
-      HOST: 0.0.0.0
-      MYSQL_HOST: db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: secret
-      MYSQL_DB: todos
+      PORT: ${PORT}
+      HOST: ${HOST}
+      MYSQL_HOST: ${MYSQL_HOST}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DB: ${MYSQL_DB}
   db:
     image: mysql:5.7
     volumes:
       - ./db/data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: todos
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
