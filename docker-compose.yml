@@ -26,7 +26,6 @@ services:
       - ./api/package-lock.json:/app/package-lock.json
       - ./api/src:/app/src
     environment:
-      PORT: ${PORT}
       HOST: ${HOST}
       MYSQL_HOST: ${MYSQL_HOST}
       MYSQL_USER: ${MYSQL_USER}
