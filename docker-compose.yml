@@ -13,8 +13,8 @@ services:
       - ./app/public:/app/public
       - ./app/build:/app/build
     environment:
-      PUBLIC_URL: ${PUBLIC_URL}
-      REACT_APP_API_URL: ${REACT_APP_API_URL}
+      PUBLIC_URL: ${APP_URL}
+      REACT_APP_API_URL: ${API_URL}
   api:
     image: node:12-alpine
     command: sh -c "npm ci --production && node src/index.js --host=0.0.0.0"
@@ -26,14 +26,14 @@ services:
       - ./api/package-lock.json:/app/package-lock.json
       - ./api/src:/app/src
     environment:
-      MYSQL_HOST: ${MYSQL_HOST}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DB: ${MYSQL_DB}
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DB: ${DB_DATABASE}
   db:
     image: mysql:5.7
     volumes:
       - ./db/data:/var/lib/mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
