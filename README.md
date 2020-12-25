@@ -19,15 +19,9 @@ Thanks to Docker and Docker Compose, now you can quickly setup and run it all to
 
 3. fill `.env` file
 
-4.
-    ```
-    git clone https://github.com/paulcervov/todo-list-api.git api && \
-    git clone https://github.com/paulcervov/todo-list-db.git db && \
-    git clone https://github.com/paulcervov/todo-list-app.git app
-    ```
-5. `docker-compose up -d`
+4. `docker-compose up -d`
 
-6. `docker-compose logs -f`
+5. `docker-compose logs -f`
 
 Wait for all services to load.
 
