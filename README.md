@@ -7,7 +7,6 @@ Inspired by [Docker Getting Started Tutorial](https://github.com/docker/getting-
 The project combines several services:
 * [Todo List App](https://github.com/paulcervov/todo-list-app) - application service
 * [Todo List Api](https://github.com/paulcervov/todo-list-api) - backend service
-* [Todo List Db](https://github.com/paulcervov/todo-list-db) - mysql database service
 
 Thanks to Docker and Docker Compose, now you can quickly setup and run it all together 👏!
 
